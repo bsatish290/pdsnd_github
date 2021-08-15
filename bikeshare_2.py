@@ -6,11 +6,11 @@ CITY_DATA = {'chicago': 'chicago.csv',
              'new york city': 'new_york_city.csv',
              'washington': 'washington.csv'}
 
-city_names_list = [key.title() for key in CITY_DATA.keys()]
-city_names = ' ,'.join(city_names_list)
-valid_time_unit = ['Month', 'Day', 'Nal']
-valid_months = ['January', 'February', 'March', 'April', 'May', 'June']
-valid_days = {'1': 'Mon', '2': 'Tue', '3': 'Wed', '4': 'Thur', '5': 'Fri', '6': 'Sat', '7': 'Sun'}
+CITY_NAMES_LIST = [key.title() for key in CITY_DATA.keys()]
+CITY_NAMES = ' ,'.join(CITY_NAMES_LIST)
+VALID_TIME_UNITS = ['Month', 'Day', 'Nal']
+VALID_MONTHS = ['January', 'February', 'March', 'April', 'May', 'June']
+VALID_DAYS = {'1': 'Mon', '2': 'Tue', '3': 'Wed', '4': 'Thur', '5': 'Fri', '6': 'Sat', '7': 'Sun'}
 
 
 def get_single_filter(filter_message, filter_type, valid_filter_items):
@@ -48,18 +48,18 @@ def get_filters():
     city, month, day = None, None, None
     print('Hello! Let\'s explore some US bikeshare data!')
 
-    city_message = "Select the city for which  you would like to see the data --> {} : ".format(city_names)
+    city_message = "Select the city for which  you would like to see the data --> {} : ".format(CITY_NAMES)
     time_units_message = "Would you like to filter by Month, Day or Not at All ?" \
                          "Type 'NAL' if no time filters are needed : "
-    months_message = "Please enter the complete month name from -> {} : ".format(" ,".join(valid_months))
+    months_message = "Please enter the complete month name from -> {} : ".format(" ,".join(VALID_MONTHS))
     days_message = "Please enter the day of the week as a number : (1, Monday) , (2, Tuesday) . . : "
 
-    city = get_single_filter(city_message, 'city', city_names_list)
-    time_unit = get_single_filter(time_units_message, 'time_unit', valid_time_unit)
+    city = get_single_filter(city_message, 'city', CITY_NAMES_LIST)
+    time_unit = get_single_filter(time_units_message, 'time_unit', VALID_TIME_UNITS)
     if time_unit.title() == 'Month':
-        month = get_single_filter(months_message, 'Month', valid_months)
+        month = get_single_filter(months_message, 'Month', VALID_MONTHS)
     elif time_unit.title() == 'Day':
-        day = get_single_filter(days_message, 'Day', valid_days)
+        day = get_single_filter(days_message, 'Day', VALID_DAYS)
 
     print('-'*40)
     return city, month, day
@@ -100,7 +100,7 @@ def load_data(city, month, day):
     df['Day_of_week'] = df['Start Time'].dt.dayofweek + 1
 
     if month:
-        month_num = (valid_months.index(month.title()) + 1)
+        month_num = (VALID_MONTHS.index(month.title()) + 1)
         df = df[(df['Month'] == month_num)]
     if day:
         day_num = int(day)
@@ -125,8 +125,8 @@ def time_stats(df: pd.DataFrame):
     most_common_hour = df['hour_of_day'].mode()
 
     # get the most common day and month names for printing from their numeric indices
-    val_most_common_month = valid_months[most_common_month[0] - 1]
-    val_most_common_day = valid_days[str(most_common_day[0])]
+    val_most_common_month = VALID_MONTHS[most_common_month[0] - 1]
+    val_most_common_day = VALID_DAYS[str(most_common_day[0])]
     val_most_common_hour = most_common_hour[0]
 
     count_common_month = df[(df['Month'] == most_common_month[0])]['Month'].count()
@@ -234,7 +234,7 @@ def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
-        print("Filters -> city : {}, month: {}, day: {}".format(city, month, day and valid_days[day]))
+        print("Filters -> city : {}, month: {}, day: {}".format(city, month, day and VALID_DAYS[day]))
         time_stats(df)
         station_stats(df)
         trip_duration_stats(df)
