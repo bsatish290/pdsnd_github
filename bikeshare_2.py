@@ -15,7 +15,8 @@ valid_days = {'1': 'Mon', '2': 'Tue', '3': 'Wed', '4': 'Thur', '5': 'Fri', '6': 
 
 def get_single_filter(filter_message, filter_type, valid_filter_items):
     """
-    Captures a valid input from a terminal for the given filter type and validates the same
+    Captures a valid input from the terminal for the given filter type and validates the same.
+    In case ,the user input is not correct, prompts user to provide input again.
 
     Args:
         (str) filter_message : The message used to prompt the user to choose a filter
@@ -67,7 +68,13 @@ def get_filters():
 
 def load_raw_data_for_user(df: pd.DataFrame):
     """
-        Displays 5 rows from the input dataframe sequentially based on user choice
+    Iterates through given dataframe and displays 5 rows at a time till the user
+    doesn't want to view any more records.
+
+    Args:
+        (pd.DataFrame) df : The df on which analysis will be performed
+    Returns:
+        None
     """
     i = 0
     len_df = len(df)
