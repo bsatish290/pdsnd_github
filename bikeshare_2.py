@@ -150,8 +150,6 @@ def station_stats(df: pd.DataFrame):
     """
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
-    df['Journey_end_points'] = "FROM : [" + df['Start Station'] + "] TO : [" + df['End Station'] + "]"
-
 
     # display most commonly used start station
     start_stn_agg_count = df['Start Station'].value_counts(ascending=False).head(1)
@@ -166,11 +164,9 @@ def station_stats(df: pd.DataFrame):
     print(" Most common end station is : '{}' with count : {}".format(freq_end_stn, freq_end_stn_count))
 
     # display most frequent combination of start station and end station trip
-    journey_agg_count = df['Journey_end_points'].value_counts(ascending=False).head(1)
-    frequent_journey_stations = journey_agg_count.index.tolist()[0]
-    frequent_journey_stn_count = journey_agg_count[0]
+    df_journey = df.groupby(['Start Station', 'End Station']).size().sort_values(ascending=False).head(1)
     print(" Most frequent combination of starting and ending stations is  : '{}' with count : {}"
-          .format(frequent_journey_stations, frequent_journey_stn_count))
+          .format(df_journey.index.tolist()[0], df_journey[0]))
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
