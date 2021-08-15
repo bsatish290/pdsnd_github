@@ -116,11 +116,13 @@ def load_data(city, month, day):
 
 
 def time_stats(df: pd.DataFrame):
-    """Displays statistics on the most frequent times of travel.
-        Args:
-            (pd.DataFrame) df : The df on which analysis will be performed
-        Returns:
-            None
+    """
+    Displays statistics on the most frequent times of travel.
+
+    Args:
+        (pd.DataFrame) df : The df on which analysis will be performed
+    Returns:
+        None
     """
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
@@ -149,11 +151,13 @@ def time_stats(df: pd.DataFrame):
 
 
 def station_stats(df: pd.DataFrame):
-    """Displays statistics on the most frequent times of travel.
-        Args:
-            (pd.DataFrame) df : The df on which analysis will be performed
-        Returns:
-            None
+    """
+    Displays statistics on the most popular start/end stations and trips.
+
+    Args:
+        (pd.DataFrame) df : The df on which analysis will be performed
+    Returns:
+        None
     """
     print('\nCalculating The Most Popular Stations and Trip...\n')
     start_time = time.time()
@@ -184,11 +188,13 @@ def station_stats(df: pd.DataFrame):
 
 
 def trip_duration_stats(df: pd.DataFrame):
-    """Displays statistics on the most frequent times of travel.
-        Args:
-            (pd.DataFrame) df : The df on which analysis will be performed
-        Returns:
-            None
+    """
+    Displays statistics on trip duration like total and mean travel time.
+
+    Args:
+        (pd.DataFrame) df : The df on which analysis will be performed
+    Returns:
+        None
     """
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
@@ -206,11 +212,13 @@ def trip_duration_stats(df: pd.DataFrame):
 
 
 def user_stats(df: pd.DataFrame):
-    """Displays statistics on the most frequent times of travel.
-        Args:
-            (pd.DataFrame) df : The df on which analysis will be performed
-        Returns:
-            None
+    """
+    Displays statistics on users like their types, gender, age.
+
+    Args:
+        (pd.DataFrame) df : The df on which analysis will be performed
+    Returns:
+        None
     """
     print('\nCalculating User Stats...\n')
     start_time = time.time()
