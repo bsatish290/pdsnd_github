@@ -25,4 +25,7 @@ The script makes use of additional python libraries :
     `pip install pandas==0.22.0`
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
+The following links were consulted for help while working on this project:
+* [Accessing key value pairs of df.value_counts()](https://moonbooks.org/Articles/How-to-extract-the-value-names-and-counts-from-valuecounts-in-pandas-/)
+
+* [getting a  series's index](https://stackoverflow.com/questions/18327624/find-elements-index-in-pandas-series)
