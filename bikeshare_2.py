@@ -72,7 +72,7 @@ def load_raw_data_for_user(df: pd.DataFrame):
     i = 0
     len_df = len(df)
     while True:
-        print_raw_data = input("Would you like to view original trip data ? Type 'yes' or 'no' : ")
+        print_raw_data = input("\nWould you like to view original trip data? Type 'yes' or 'no' :\n")
         if print_raw_data.lower() == 'yes' and i < len_df:
             print(df[i: i+5].to_string())
             print()
